@@ -14,7 +14,7 @@ from telethon.sessions import StringSession
 from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.utils import get_display_name
-from urlextract import URLExtract
+
 
 from config import API_HASH, API_ID, SESSION
 
