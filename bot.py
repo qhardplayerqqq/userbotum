@@ -41,14 +41,16 @@ async def ping(event):
 
 
 # ------------------------------------------link kısaltma
-@bot.on(events.NewMessage(pattern=r"asd (.*)"))
-async def kisalt(event):
-    link = event.pattern_match.group(1)
+@bot.on(events.NewMessage(pattern="asd (.*) |(.*)"))
+async def handler(event):
 
-    if link:
-        aciklama = " ".join(x for x in link.split()[1:])
+    aciklama = event.pattern_match.group(1)
+    msg = event.text
+    link = msg.split(aciklama)
 
-        url = f"https://www.pnd.tl/api?api=90edf199f17aa2f2455d8d624cc524a097627291&url={link}&category=6"
+    if aciklama:
+
+        url = f"https://www.pnd.tl/api?api=90edf199f17aa2f2455d8d624cc524a097627291&url={link[-1]}&category=6"
 
         ksl = requests.get(url).json()
         ksl = ksl["shortenedUrl"]
